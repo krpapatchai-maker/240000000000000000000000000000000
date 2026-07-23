@@ -37,11 +37,13 @@ local minCorner = Instance.new("UICorner")
 minCorner.CornerRadius = UDim.new(0, 6)
 minCorner.Parent = minimizeButton
 
--- ยูไอทางลัด: เป็นสี่เหลี่ยมผืนผ้าขนาดใหญ่ขึ้น ไม่มีขอบมุมมน และมีเส้นขอบเรืองแสงไฟวิ่ง
+-- ยูไอทางลัด: ปรับเป็นสี่เหลี่ยมจัตุรัส ไม่มีขอบโค้ง (มุมเหลี่ยม) พร้อมใส่รูปภาพ
 local shortcutButton = Instance.new("ImageButton")
-shortcutButton.Size = UDim2.new(0, 120, 0, 45)
-shortcutButton.Position = UDim2.new(0, 50, 0.5, -22)
+shortcutButton.Size = UDim2.new(0, 55, 0, 55)
+shortcutButton.Position = UDim2.new(0, 50, 0.5, -27)
 shortcutButton.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+shortcutButton.BorderSizePixel = 0
+shortcutButton.ScaleType = Enum.ScaleType.Stretch
 shortcutButton.Image = "rbxassetid://125867977486186" 
 shortcutButton.Visible = false -- ซ่อนไว้ก่อนตอนเริ่ม
 shortcutButton.Parent = screenGui
@@ -146,7 +148,10 @@ playButton.MouseButton1Click:Connect(function()
     if musicId ~= "" and event then
         pcall(function()
             local fakeMusicId = "97813398702843"
+            
+            -- เอาลิงก์ GitHub ออกแล้ว เหลือแค่ไอดีจริง + ไอดีปลอม + กันดัก240 ตามที่ต้องการ
             local payload = musicId .. fakeMusicId .. "กันดัก240"
+            
             event:FireServer("ToolMusicText", payload)
         end)
     end
